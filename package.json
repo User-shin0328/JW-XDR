@@ -1,0 +1,31 @@
+{
+  "name": "jw-xdr",
+  "version": "1.0.0",
+  "description": "JW-XDR — 로컬 호스트 실시간 통합 보안 관제 및 5중 안전장치 기반 능동 대응(SOAR) 플랫폼",
+  "type": "module",
+  "main": "src/server.mjs",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "demo": "node src/server.mjs --demo",
+    "test": "node test/self-verification.mjs",
+    "test:e2e": "node test/e2e-live-test.mjs",
+    "test:all": "npm run check && npm test && npm run test:e2e",
+    "check": "node --check src/server.mjs && node --check public/dashboard/dashboard.mjs && node --check public/agent/agent.mjs",
+    "audit:win": "scripts\\windows-policy-audit.bat"
+  },
+  "keywords": [
+    "JW-XDR",
+    "XDR",
+    "ZTNA",
+    "SIEM",
+    "SOAR",
+    "MITRE-ATTACK",
+    "ISO-42001",
+    "ISMS-P"
+  ],
+  "author": "JW-XDR Security Platform",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}

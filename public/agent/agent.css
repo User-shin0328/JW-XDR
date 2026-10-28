@@ -1,0 +1,348 @@
+/* ==========================================================================
+   Endpoint Security Agent Stylesheet (agent.css)
+   IBM Carbon Design System v11 (g100 / g90 Security Dark Theme)
+   Strict CSP (style-src 'self') 100% Compliant — Zero Inline Styles
+   ========================================================================== */
+
+:root {
+  --cds-background: #161616;
+  --cds-layer-01: #262626;
+  --cds-layer-02: #393939;
+  --cds-layer-hover-01: #333333;
+  --cds-border-subtle-01: #393939;
+  --cds-border-strong-01: #525252;
+  --cds-text-primary: #f4f4f4;
+  --cds-text-secondary: #c6c6c6;
+  --cds-text-helper: #8d8d8d;
+  --cds-interactive: #0f62fe;
+  --cds-button-primary-hover: #0353e9;
+  --cds-support-error: #fa4d56;
+  --cds-support-warning: #f1c21b;
+  --cds-support-success: #42be65;
+  --font-sans: "IBM Plex Sans", "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", "Consolas", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.agent-body {
+  margin: 0;
+  padding: 0;
+  background: var(--cds-background);
+  color: var(--cds-text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+}
+
+.agent-header {
+  background: var(--cds-background);
+  color: var(--cds-text-primary);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+}
+
+.agent-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.agent-shield {
+  font-size: 22px;
+}
+
+.agent-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.agent-sub {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--cds-text-secondary);
+}
+
+.agent-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-console-link {
+  text-decoration: none;
+  background: var(--cds-layer-02);
+  color: var(--cds-text-primary);
+  border: 1px solid var(--cds-border-strong-01);
+  padding: 7px 14px;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 12.5px;
+}
+
+.btn-console-link:hover {
+  background: #4c4c4c;
+}
+
+.btn-refresh {
+  background: var(--cds-interactive);
+  color: #ffffff;
+  border: 1px solid var(--cds-interactive);
+  padding: 7px 14px;
+  border-radius: 0;
+  font-weight: 500;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.btn-refresh:hover {
+  background: var(--cds-button-primary-hover);
+}
+
+.agent-container {
+  max-width: 1280px;
+  margin: 24px auto 48px;
+  padding: 0 24px;
+}
+
+/* Carbon Line Tabs */
+.agent-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+}
+
+.agent-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 20px;
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--cds-text-secondary);
+  cursor: pointer;
+}
+
+.agent-tab:hover {
+  background: var(--cds-layer-01);
+  color: var(--cds-text-primary);
+}
+
+.agent-tab.active {
+  background: var(--cds-layer-01);
+  border-bottom-color: var(--cds-interactive);
+  color: var(--cds-text-primary);
+  font-weight: 600;
+}
+
+/* Carbon Layer-01 Containers */
+.timeline-card,
+.agent-card {
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-radius: 0;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.timeline-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+}
+
+.section-heading {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+}
+
+.section-desc {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--cds-text-secondary);
+}
+
+.pill-chip-group {
+  display: flex;
+  gap: 6px;
+}
+
+.pill-chip {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--cds-border-strong-01);
+  background: var(--cds-layer-02);
+  color: var(--cds-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pill-chip.active {
+  background: var(--cds-interactive);
+  border-color: var(--cds-interactive);
+  color: #ffffff;
+}
+
+.timeline-stack-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 0;
+  background: var(--cds-background);
+  border: 1px solid var(--cds-border-subtle-01);
+  font-size: 13px;
+}
+
+.timeline-row.row-ok {
+  border-left: 4px solid var(--cds-support-success);
+}
+
+.timeline-row.row-warn {
+  border-left: 4px solid var(--cds-support-warning);
+}
+
+.timeline-row.row-unv {
+  border-left: 4px solid var(--cds-support-error);
+}
+
+.badge-tag {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge-tag.ok {
+  background: rgba(66, 190, 101, 0.2);
+  color: #a7f0ba;
+}
+
+.badge-tag.warn {
+  background: rgba(241, 194, 27, 0.2);
+  color: #fddc69;
+}
+
+.badge-tag.unv {
+  background: rgba(250, 77, 86, 0.2);
+  color: #ffb3b8;
+}
+
+/* Resource Grid & Progress Bars */
+.resource-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.resource-box {
+  padding: 16px;
+  border-radius: 0;
+  border: 1px solid var(--cds-border-subtle-01);
+  border-top: 3px solid var(--cds-interactive);
+  background: var(--cds-background);
+}
+
+.resource-box h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  padding-bottom: 8px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--cds-layer-02);
+  border-radius: 0;
+  overflow: hidden;
+  margin: 8px 0 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 0;
+}
+
+.progress-fill.w-core {
+  width: 75%;
+  background: var(--cds-interactive);
+}
+
+.progress-fill.w-heap {
+  width: 35%;
+  background: var(--cds-support-success);
+}
+
+.progress-fill.w-disk {
+  width: 14%;
+  background: #a56eff;
+}
+
+.unv-reason-box {
+  padding: 10px 12px;
+  border-radius: 0;
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-left: 3px solid var(--cds-interactive);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cds-text-primary);
+  margin-top: 8px;
+}
+
+.agent-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 10px;
+  border: 1px solid var(--cds-border-subtle-01);
+}
+
+.agent-table th,
+.agent-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  text-align: left;
+}
+
+.agent-table th {
+  background: var(--cds-layer-02);
+  color: var(--cds-text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+}

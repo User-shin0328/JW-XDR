@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JW-XDR — 통합 보안 관제 대시보드</title>
+  <link rel="stylesheet" href="/dashboard/dashboard.css" />
+</head>
+<body class="xdr-body">
+  <!-- 상단 글로벌 헤더 바 (IBM Carbon UI Shell 48px) -->
+  <header class="xdr-topbar">
+    <div class="topbar-left">
+      <button type="button" id="btn-sidebar-toggle" class="icon-btn" title="사이드바 토글">☰</button>
+      <div class="brand-wrap" id="brand-home">
+        <span class="brand-comet-icon">◆</span>
+        <span class="brand-title">JW-XDR</span>
+        <span class="brand-sub-badge" id="top-host-badge">LOCAL HOST</span>
+      </div>
+      <div class="topbar-kpi-strip" id="topbar-kpi-strip">
+        <span class="kpi-pill kpi-mttd" id="top-mttd">MTTD: --</span>
+        <span class="kpi-pill kpi-mttr" id="top-mttr">MTTR: --</span>
+        <span class="kpi-pill kpi-ai-ok" id="top-ai-status">● 실시간 수집기 가동 중</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="btn-refresh-telemetry" class="top-utility-btn">🔄 실시간 로그 · 호스트 재수집</button>
+      <button type="button" id="btn-open-tenant-drawer" class="top-utility-btn">⚙️ AI · 자동차단 설정</button>
+      <button type="button" class="top-utility-btn" id="btn-top-backup" title="SQLite 무결성 백업 생성">💾 DB 백업</button>
+      <button type="button" class="top-utility-btn" id="btn-top-cases" title="탐지 케이스 빠른 목록">📥 케이스 목록</button>
+    </div>
+  </header>
+
+  <div class="xdr-layout">
+    <!-- 좌측 사이드바 -->
+    <aside class="xdr-sidebar" id="xdr-sidebar">
+      <div class="sidebar-tenant-box">
+        <div class="sidebar-section-title">관제 대상 호스트 (실측)</div>
+        <div class="host-summary-box" id="sidebar-host-box">
+          <div class="host-summary-name" id="sb-hostname">로딩 중...</div>
+          <div class="host-summary-meta" id="sb-os">--</div>
+          <div class="host-summary-meta" id="sb-cpu-mem">--</div>
+          <div class="host-summary-meta" id="sb-ip">--</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">보안 관제 메뉴</div>
+        <ul class="nav-sublist" id="nav-dashboard-list">
+          <li><button type="button" class="nav-item active" data-view="cases">위협 케이스 & 실시간 로그</button></li>
+          <li><button type="button" class="nav-item" data-view="network">실시간 네트워크 소켓 (netstat)</button></li>
+          <li><button type="button" class="nav-item" data-view="endpoint">실행 프로세스 (tasklist) & ZTNA</button></li>
+          <li><button type="button" class="nav-item" data-view="policy">Windows 보안 정책 점검</button></li>
+          <li><button type="button" class="nav-item" data-view="sbom">공급망 취약점 스캔 (OSV.dev)</button></li>
+          <li><button type="button" class="nav-item" data-view="soar">능동 대응 (SOAR) · AI 감사 · 백업</button></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- 메인 대시보드 워크스페이스 -->
+    <main class="xdr-main" id="xdr-main">
+      <div class="main-toolbar">
+        <div class="toolbar-title-group">
+          <h1 class="view-title" id="current-view-title">위협 케이스 & 실시간 유입 로그</h1>
+          <span class="view-subtitle" id="current-view-subtitle">호스트 실시간 이벤트 로그(wevtutil) · 유입 HTTP 트래픽 로그 · 위협 케이스 상관분석</span>
+        </div>
+        <div class="toolbar-actions">
+          <input type="text" id="global-case-search" class="toolbar-search" placeholder="로그, 케이스 ID, IP, 프로세스 검색..." />
+          <button type="button" id="btn-toolbar-refresh" class="btn-primary-emerald">🔄 실시간 로그 새로고침</button>
+        </div>
+      </div>
+
+      <!-- 동적 뷰 컨테이너 -->
+      <div id="view-container" class="view-container"></div>
+    </main>
+  </div>
+
+  <!-- 우측 슬라이드오버 드로어 1: 케이스 목록 -->
+  <aside class="slide-drawer hidden" id="drawer-case-list" aria-label="케이스 목록 드로어">
+    <div class="drawer-header">
+      <div>
+        <h2 class="drawer-title" id="drawer-list-title">탐지된 케이스 목록</h2>
+        <p class="drawer-sub" id="drawer-list-count">총 0개</p>
+      </div>
+      <button type="button" class="drawer-close-btn" data-close-drawer="drawer-case-list">✕</button>
+    </div>
+    <div class="drawer-body" id="drawer-case-list-body"></div>
+  </aside>
+
+  <!-- 우측 슬라이드오버 드로어 2: 케이스 상세 -->
+  <aside class="slide-drawer drawer-wide hidden" id="drawer-case-detail" aria-label="케이스 상세 드로어">
+    <div class="drawer-header">
+      <div class="drawer-title-row">
+        <button type="button" class="btn-back" id="btn-back-to-list">←</button>
+        <div>
+          <div class="case-badge-row" id="detail-badge-row"></div>
+          <h2 class="drawer-title" id="detail-case-title">케이스 제목</h2>
+        </div>
+      </div>
+      <button type="button" class="drawer-close-btn" data-close-drawer="drawer-case-detail">✕</button>
+    </div>
+
+    <div class="drawer-tabs" id="case-detail-tabs">
+      <button type="button" class="drawer-tab active" data-tab="basic">기본 정보 & Kill Chain</button>
+      <button type="button" class="drawer-tab" data-tab="events">원시 이벤트</button>
+      <button type="button" class="drawer-tab" data-tab="assets">대상 호스트</button>
+      <button type="button" class="drawer-tab" data-tab="ioc">침해 지표 (IOC)</button>
+      <button type="button" class="drawer-tab" data-tab="report">AI 근거 분석</button>
+      <button type="button" class="drawer-tab" data-tab="activity">능동 대응 (SOAR)</button>
+    </div>
+
+    <div class="drawer-body" id="drawer-case-detail-body"></div>
+
+    <div class="drawer-footer-bar">
+      <button type="button" class="action-pill action-ack" id="btn-case-ack">✓ 인지 (Acknowledge)</button>
+      <button type="button" class="action-pill action-close" id="btn-case-close">⊗ 종결 (Close & MTTR 기록)</button>
+      <button type="button" class="action-pill action-fp" id="btn-case-fp">오탐 예외처리 (FP)</button>
+      <button type="button" class="action-pill action-assign" id="btn-case-tp">정탐 확정 (TP)</button>
+    </div>
+  </aside>
+
+  <!-- 우측 슬라이드오버 드로어 3: AI & 자동차단 정책 설정 -->
+  <aside class="slide-drawer drawer-wide hidden" id="drawer-tenant-settings" aria-label="정책 설정 드로어">
+    <div class="drawer-header">
+      <div>
+        <h2 class="drawer-title" id="tenant-drawer-title">AI 게이트웨이 · SOC Agent · 자동차단 정책 설정</h2>
+        <p class="drawer-sub">AI 연결 상태 점검 · 긴급 중지(Kill Switch) · 자산 중요도별 자동차단 기준 제어</p>
+      </div>
+      <button type="button" class="drawer-close-btn" data-close-drawer="drawer-tenant-settings">✕</button>
+    </div>
+    <div class="drawer-tabs" id="tenant-detail-tabs">
+      <button type="button" class="drawer-tab active" data-ttab="ai-link">AI 게이트웨이 상태</button>
+      <button type="button" class="drawer-tab" data-ttab="soc-agent">SOC Agent 제어 (Kill Switch)</button>
+      <button type="button" class="drawer-tab" data-ttab="block-status">자동차단 중요도 기준</button>
+    </div>
+    <div class="drawer-body" id="drawer-tenant-body"></div>
+  </aside>
+
+  <!-- 모달: AI 근거 고정 분석 리포트 생성 -->
+  <div class="modal-backdrop hidden" id="modal-ai-report">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">AI 근거 고정(Evidence-Bound) 분석 리포트 생성</h3>
+          <p class="modal-sub" id="ai-modal-case-sub">선택된 케이스의 실제 수집 이벤트 ID만을 근거로 판정합니다.</p>
+        </div>
+        <button type="button" class="drawer-close-btn" data-close-modal="modal-ai-report">✕</button>
+      </div>
+      <div class="modal-body" id="modal-ai-report-body"></div>
+    </div>
+  </div>
+
+  <!-- 하단 토스트 알림 -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script type="module" src="/dashboard/dashboard.mjs"></script>
+</body>
+</html>

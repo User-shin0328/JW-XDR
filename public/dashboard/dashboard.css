@@ -1,0 +1,1115 @@
+/* ==========================================================================
+   JW-XDR — IBM Carbon Design System v11 (g100 / g90 Security Dark Theme)
+   Strict CSP (style-src 'self') 100% Compliant — Zero Inline Styles
+   ========================================================================== */
+
+:root {
+  /* IBM Carbon v11 Gray 100 (g100) Official Color Tokens */
+  --cds-background: #161616;          /* Gray 100 */
+  --cds-layer-01: #262626;            /* Gray 90 — Primary tiles & cards */
+  --cds-layer-02: #353535;            /* Gray 80 — Nested tiles, table headers, inputs */
+  --cds-layer-hover-01: #303030;      /* Gray 90 hover */
+  --cds-layer-hover-02: #454545;      /* Gray 80 hover */
+
+  /* Borders */
+  --cds-border-subtle-01: #393939;    /* Gray 80 */
+  --cds-border-strong-01: #525252;    /* Gray 70 */
+  --cds-border-interactive: #0f62fe;  /* Blue 60 */
+
+  /* Typography Colors (High-Contrast Readability) */
+  --cds-text-primary: #f4f4f4;        /* Gray 10 */
+  --cds-text-secondary: #d0d0d0;      /* Gray 25 — Boosted for better Korean readability */
+  --cds-text-helper: #9e9e9e;         /* Gray 45 */
+  --cds-text-on-color: #ffffff;
+
+  /* Interactive & Brand (IBM Blue 60 / Blue 40) */
+  --cds-interactive: #0f62fe;         /* Blue 60 */
+  --cds-button-primary-hover: #0353e9;
+  --cds-button-secondary: #393939;
+  --cds-button-secondary-hover: #4c4c4c;
+  --cds-link-primary: #78a9ff;        /* Blue 40 */
+
+  /* Support / Status Semantic Tokens */
+  --cds-support-error: #fa4d56;       /* Red 50 */
+  --cds-tag-red-bg: rgba(250, 77, 86, 0.22);
+  --cds-tag-red-text: #ffb3b8;        /* Red 20 */
+
+  --cds-support-warning: #f1c21b;     /* Yellow 30 */
+  --cds-support-caution: #ff832b;     /* Orange 40 */
+  --cds-tag-warm-bg: rgba(255, 131, 43, 0.22);
+  --cds-tag-warm-text: #ffd9be;
+
+  --cds-support-success: #42be65;     /* Green 40 */
+  --cds-tag-green-bg: rgba(66, 190, 101, 0.22);
+  --cds-tag-green-text: #a7f0ba;      /* Green 20 */
+
+  --cds-support-info: #4589ff;        /* Blue 50 */
+  --cds-tag-blue-bg: rgba(69, 137, 255, 0.24);
+  --cds-tag-blue-text: #a6c8ff;       /* Blue 30 */
+
+  --cds-tag-purple-bg: rgba(165, 110, 255, 0.24);
+  --cds-tag-purple-text: #d4bbff;     /* Purple 30 */
+
+  /* Typography Stack */
+  --font-sans: "IBM Plex Sans", "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", "Cascadia Mono", "Consolas", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body.xdr-body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  letter-spacing: 0.12px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   1. IBM Carbon UI Shell Header (48px Fixed Bar)
+   ========================================================================== */
+.xdr-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cds-background);
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.topbar-left,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px 0 4px;
+  height: 100%;
+  cursor: pointer;
+  user-select: none;
+  border-right: 1px solid var(--cds-border-subtle-01);
+}
+
+.brand-comet-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--cds-interactive);
+  color: var(--cds-text-on-color);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.brand-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  color: var(--cds-text-primary);
+}
+
+.brand-sub-badge {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 2px 8px;
+  background: var(--cds-layer-01);
+  color: var(--cds-link-primary);
+  border: 1px solid var(--cds-border-subtle-01);
+}
+
+.topbar-kpi-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 6px;
+}
+
+.kpi-pill {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-mttd {
+  background: var(--cds-tag-blue-bg);
+  color: var(--cds-tag-blue-text);
+}
+
+.kpi-mttr {
+  background: var(--cds-tag-purple-bg);
+  color: var(--cds-tag-purple-text);
+}
+
+.kpi-ai-ok {
+  background: var(--cds-tag-green-bg);
+  color: var(--cds-tag-green-text);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cds-text-secondary);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--cds-layer-01);
+  color: var(--cds-text-primary);
+}
+
+.top-utility-btn {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-layer-01);
+  color: var(--cds-text-primary);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.top-utility-btn:hover {
+  background: var(--cds-layer-02);
+  border-color: var(--cds-border-strong-01);
+}
+
+/* ==========================================================================
+   2. IBM Carbon UI Shell SideNav & Main Workspace Grid
+   ========================================================================== */
+.xdr-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: calc(100vh - 48px);
+}
+
+.xdr-layout.sidebar-collapsed,
+.xdr-layout:has(.xdr-sidebar.collapsed) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.xdr-sidebar {
+  background: var(--cds-background);
+  border-right: 1px solid var(--cds-border-subtle-01);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.xdr-sidebar.collapsed {
+  display: none;
+}
+
+.sidebar-tenant-box {
+  padding: 0 16px;
+}
+
+.sidebar-section-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--cds-text-helper);
+  margin-bottom: 10px;
+  padding: 0 16px;
+}
+
+.sidebar-tenant-box .sidebar-section-title {
+  padding: 0;
+}
+
+.host-summary-box {
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-left: 3px solid var(--cds-interactive);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.host-summary-name {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--cds-text-primary);
+  word-break: break-all;
+}
+
+.host-summary-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cds-text-secondary);
+  line-height: 1.45;
+}
+
+.nav-sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  border-left: 4px solid transparent;
+  background: transparent;
+  color: var(--cds-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.nav-item:hover {
+  background: var(--cds-layer-01);
+  color: var(--cds-text-primary);
+}
+
+.nav-item.active {
+  background: var(--cds-layer-01);
+  color: var(--cds-text-primary);
+  font-weight: 600;
+  border-left-color: var(--cds-interactive);
+}
+
+/* ==========================================================================
+   3. Main Content Area & Page Header Banner
+   ========================================================================== */
+.xdr-main {
+  padding: 24px 32px 56px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+}
+
+.toolbar-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.view-title {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+}
+
+.view-subtitle {
+  font-size: 13px;
+  color: var(--cds-text-secondary);
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.toolbar-search {
+  width: 280px;
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-bottom: 1px solid var(--cds-border-strong-01);
+  background: var(--cds-layer-01);
+  color: var(--cds-text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  outline: none;
+}
+
+.toolbar-search:focus {
+  outline: 2px solid var(--cds-interactive);
+  outline-offset: -2px;
+}
+
+.view-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   4. IBM Carbon Summary Metric Tiles (.summary-card / .summary-val)
+   ========================================================================== */
+.summary-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.summary-card {
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-top: 3px solid var(--cds-interactive);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.summary-card.clickable {
+  cursor: pointer;
+}
+
+.summary-card.clickable:hover,
+.summary-card.active-tile {
+  background: var(--cds-layer-hover-01);
+  border-color: var(--cds-link-primary);
+}
+
+.summary-card-warn {
+  border-top-color: var(--cds-support-error);
+}
+
+.summary-card-amber {
+  border-top-color: var(--cds-support-warning);
+}
+
+.summary-card-emerald {
+  border-top-color: var(--cds-support-success);
+}
+
+.summary-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--cds-text-secondary);
+}
+
+.summary-val {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--cds-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-subnote {
+  font-size: 12px;
+  color: var(--cds-text-helper);
+}
+
+/* Semantic Text Colors */
+.emerald-text {
+  color: #6fdc8c !important;
+}
+
+.crimson-text {
+  color: #ff8389 !important;
+}
+
+.orange-text {
+  color: #ffb784 !important;
+}
+
+.muted-label {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--cds-text-helper);
+  line-height: 1.45;
+}
+
+.mono-code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   5. Panel Cards (.panel-card / .card-title) & 2-Column Grids
+   ========================================================================== */
+.panel-card {
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-subtle-01);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+}
+
+.section-main-title {
+  display: block;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+}
+
+.case-desc-text {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--cds-text-secondary);
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  gap: 20px;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--cds-border-subtle-01);
+  margin: 4px 0;
+}
+
+/* ==========================================================================
+   6. Filter Bars, Carbon Inputs/Selects, Buttons & Key-Value Grids
+   ========================================================================== */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-select,
+.filter-input {
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-bottom: 1px solid var(--cds-border-strong-01);
+  background: var(--cds-layer-02);
+  color: var(--cds-text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  outline: none;
+}
+
+.filter-select {
+  min-width: 210px;
+}
+
+.filter-input {
+  min-width: 190px;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+  outline: 2px solid var(--cds-interactive);
+  outline-offset: -2px;
+}
+
+.btn-primary-emerald {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--cds-interactive);
+  background: var(--cds-interactive);
+  color: var(--cds-text-on-color);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.12s ease;
+}
+
+.btn-primary-emerald:hover {
+  background: var(--cds-button-primary-hover);
+}
+
+.btn-outline-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--cds-border-strong-01);
+  background: var(--cds-button-secondary);
+  color: var(--cds-text-primary);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.btn-outline-sm:hover {
+  background: var(--cds-button-secondary-hover);
+  border-color: var(--cds-link-primary);
+}
+
+.btn-sm {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+/* Key-Value Grid (.kv-grid / .kv-item / .kv-label / .kv-val) */
+.kv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.kv-item {
+  background: var(--cds-background);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-left: 3px solid var(--cds-interactive);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kv-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cds-text-helper);
+}
+
+.kv-val {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   7. IBM Carbon DataTable & Severity / AI / Status Badges
+   ========================================================================== */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-layer-01);
+}
+
+.xdr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.xdr-table thead th {
+  background: var(--cds-layer-02);
+  color: var(--cds-text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25px;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--cds-border-strong-01);
+  white-space: nowrap;
+}
+
+.xdr-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  color: var(--cds-text-secondary);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.xdr-table tbody tr {
+  background: var(--cds-layer-01);
+  transition: background-color 0.1s ease;
+}
+
+.xdr-table tbody tr:hover {
+  background: var(--cds-layer-hover-01);
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.cell-title-wrap {
+  min-width: 260px;
+  max-width: 460px;
+  color: var(--cds-text-primary) !important;
+}
+
+/* Carbon Severity Tags (.sev-badge) */
+.sev-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sev-critical {
+  background: var(--cds-tag-red-bg);
+  color: var(--cds-tag-red-text);
+  border: 1px solid rgba(250, 77, 86, 0.45);
+}
+
+.sev-high {
+  background: var(--cds-tag-warm-bg);
+  color: var(--cds-tag-warm-text);
+  border: 1px solid rgba(255, 131, 43, 0.45);
+}
+
+.sev-medium {
+  background: rgba(241, 194, 27, 0.2);
+  color: #fddc69;
+  border: 1px solid rgba(241, 194, 27, 0.4);
+}
+
+.sev-low {
+  background: var(--cds-tag-green-bg);
+  color: var(--cds-tag-green-text);
+  border: 1px solid rgba(66, 190, 101, 0.45);
+}
+
+/* Status & AI Badges (.status-pill / .ai-badge) */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: var(--cds-layer-02);
+  color: var(--cds-text-primary);
+  border: 1px solid var(--cds-border-strong-01);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ai-tp {
+  background: var(--cds-tag-purple-bg);
+  color: var(--cds-tag-purple-text);
+}
+
+.ai-fp {
+  background: var(--cds-tag-blue-bg);
+  color: var(--cds-tag-blue-text);
+}
+
+.ai-hold {
+  background: var(--cds-layer-02);
+  color: var(--cds-text-secondary);
+}
+
+/* Code / Console Output Box (.code-dump-box) */
+.code-dump-box {
+  margin: 0;
+  padding: 16px 18px;
+  background: var(--cds-background);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-left: 3px solid var(--cds-interactive);
+  color: var(--cds-text-primary);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   8. MITRE Kill Chain Grid (.killchain-grid / .kc-stage-box)
+   ========================================================================== */
+.killchain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.kc-stage-box {
+  padding: 12px 14px;
+  background: var(--cds-background);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-left: 3px solid var(--cds-border-strong-01);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cds-text-secondary);
+}
+
+.kc-stage-box.kc-active {
+  background: var(--cds-tag-red-bg);
+  border-color: var(--cds-support-error);
+  border-left: 4px solid var(--cds-support-error);
+  color: var(--cds-tag-red-text);
+  font-weight: 600;
+}
+
+.kc-step-num {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--cds-text-helper);
+}
+
+.kc-stage-box.kc-active .kc-step-num {
+  color: var(--cds-tag-red-text);
+}
+
+.kc-step-name {
+  font-size: 12.5px;
+}
+
+/* ==========================================================================
+   9. Slide-Over Side Panel Drawers, Modals & Toast Notifications
+   ========================================================================== */
+.slide-drawer {
+  position: fixed;
+  top: 48px;
+  right: 0;
+  bottom: 0;
+  width: 520px;
+  max-width: 94vw;
+  z-index: 350;
+  background: var(--cds-layer-01);
+  border-left: 1px solid var(--cds-border-strong-01);
+  box-shadow: -8px 0 28px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-drawer.drawer-wide {
+  width: 820px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.drawer-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-background);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.drawer-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.case-badge-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.drawer-title {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+  line-height: 1.4;
+}
+
+.drawer-sub {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--cds-text-secondary);
+}
+
+.drawer-close-btn,
+.btn-back {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-layer-01);
+  color: var(--cds-text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.drawer-close-btn:hover,
+.btn-back:hover {
+  background: var(--cds-layer-02);
+}
+
+.drawer-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-background);
+}
+
+.drawer-tab {
+  padding: 12px 16px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--cds-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.drawer-tab:hover {
+  color: var(--cds-text-primary);
+  background: var(--cds-layer-01);
+}
+
+.drawer-tab.active {
+  color: var(--cds-text-primary);
+  font-weight: 600;
+  border-bottom-color: var(--cds-interactive);
+  background: var(--cds-layer-01);
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Case List Items in Drawer 1 */
+.drawer-case-item {
+  background: var(--cds-background);
+  border: 1px solid var(--cds-border-subtle-01);
+  border-left: 3px solid var(--cds-interactive);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.drawer-case-item:hover {
+  background: var(--cds-layer-hover-01);
+}
+
+.drawer-case-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cds-text-primary);
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.drawer-case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cds-text-helper);
+}
+
+.drawer-footer-bar {
+  padding: 14px 24px;
+  border-top: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-background);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.action-pill {
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--cds-border-strong-01);
+  background: var(--cds-layer-02);
+  color: var(--cds-text-primary);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.action-pill:hover {
+  background: var(--cds-layer-hover-02);
+}
+
+.action-ack {
+  border-color: var(--cds-interactive);
+  background: var(--cds-interactive);
+  color: var(--cds-text-on-color);
+}
+
+.action-close {
+  border-color: var(--cds-support-success);
+  color: var(--cds-tag-green-text);
+}
+
+.action-fp {
+  border-color: var(--cds-support-warning);
+  color: var(--cds-tag-warm-text);
+}
+
+.action-assign {
+  border-color: var(--cds-support-error);
+  color: var(--cds-tag-red-text);
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 450;
+  background: rgba(16, 16, 16, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-card {
+  width: 700px;
+  max-width: 95vw;
+  max-height: 88vh;
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-strong-01);
+  border-top: 3px solid var(--cds-interactive);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--cds-border-subtle-01);
+  background: var(--cds-background);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal-sub {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--cds-text-secondary);
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Toast Notification (.toast-container / .toast-item) */
+.toast-container {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast-item {
+  padding: 13px 18px;
+  background: var(--cds-layer-01);
+  border: 1px solid var(--cds-border-strong-01);
+  border-left: 4px solid var(--cds-interactive);
+  color: var(--cds-text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 1024px) {
+  .xdr-layout {
+    grid-template-columns: 1fr;
+  }
+  .xdr-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--cds-border-subtle-01);
+  }
+  .grid-2col {
+    grid-template-columns: 1fr;
+  }
+}

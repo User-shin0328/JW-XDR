@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JW-XDR 엔드포인트 보안 에이전트 (bankhar-agent)</title>
+  <link rel="stylesheet" href="/agent/agent.css" />
+</head>
+<body class="agent-body">
+  <header class="agent-header">
+    <div class="agent-brand">
+      <span class="agent-shield">🛡️</span>
+      <div>
+        <h1 class="agent-title">JW-XDR 엔드포인트 보안 에이전트 (bankhar-agent)</h1>
+        <p class="agent-sub">브라우저/OS 실시간 자원 실측 및 Windows 로컬 보안 정책 상시 실증</p>
+      </div>
+    </div>
+    <div class="agent-nav-right">
+      <a href="/dashboard/" class="btn-console-link">◆ JW-XDR 통합 관제 대시보드 (/dashboard)</a>
+      <button type="button" class="btn-refresh" id="btn-agent-refresh">🔄 다시 조회 (실측 스냅샷 추가)</button>
+    </div>
+  </header>
+
+  <main class="agent-container">
+    <!-- 상단 3대 메뉴 탭 (13단계 three-menus 규격) -->
+    <nav class="agent-tabs" id="agent-tabs">
+      <button type="button" class="agent-tab active" data-atab="identity">① 신원 · 기기 · ZTNA 판정</button>
+      <button type="button" class="agent-tab" data-atab="pc-status">② 내 PC 상태 · Windows 상시 실증</button>
+      <button type="button" class="agent-tab" data-atab="security-log">③ 보안 기록 · AI · 4단계 능동 대응</button>
+    </nav>
+
+    <!-- 기록 타임라인형 최상단 고정 바: 타원형 알약 칩 [전체] [주의] [확인 불가] + 시각순 1줄 스택 피드 -->
+    <section class="timeline-card">
+      <div class="timeline-header-row">
+        <div>
+          <h2 class="section-heading">⏱️ 실시간 보안·자원 점검 타임라인 피드 (기록 타임라인형)</h2>
+          <p class="section-desc">실측 항목(● 정상), 원천 서버/정책 주의 항목(▲ 주의), 샌드박스 권한 밖 항목(? 확인 불가)을 섞지 않고 분리하여 최신순으로 쌓습니다.</p>
+        </div>
+        <div class="pill-chip-group" id="timeline-filter-chips">
+          <button type="button" class="pill-chip active" data-filter="all" id="chip-all">전체 (0)</button>
+          <button type="button" class="pill-chip warn" data-filter="warn" id="chip-warn">주의 (0)</button>
+          <button type="button" class="pill-chip unv" data-filter="unv" id="chip-unv">확인 불가 (0)</button>
+        </div>
+      </div>
+      <ul class="timeline-stack-list" id="timeline-stack-list"></ul>
+    </section>
+
+    <!-- 탭별 동적 콘텐츠 영역 -->
+    <div id="agent-tab-content"></div>
+  </main>
+
+  <script type="module" src="/agent/agent.mjs"></script>
+</body>
+</html>
