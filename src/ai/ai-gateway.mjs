@@ -1,6 +1,6 @@
 /**
- * Module 4-A: AI Gateway Connection Diagnostics & 7 Failure Recovery Guides
- * 17단계 + 노션 테넌트 상세정보 [AI 서비스 연동] (LightChat / 모델 38개 연동)
+ * AI Gateway Connection Diagnostics & 7 Failure Recovery Guides
+ * 테넌트 상세정보 [AI 서비스 연동] (LLM 게이트웨이 및 모델 연동 진단)
  */
 
 export const AI_RECOVERY_GUIDES = {

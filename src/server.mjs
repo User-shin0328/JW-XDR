@@ -185,7 +185,7 @@ export function createXdrServer({ dbPath } = {}) {
             reason: evalResult.reason,
             caseId: createdCase.case_id,
             autoSoarActionId: autoSoar?.action?.action_id || null,
-            message: `[sktaleph-xdr 실시간 탐지·차단] 유입된 HTTP 요청에서 악성 페이로드(${evalResult.mitreTechniqueId})가 탐지되어 즉시 차단(403)되고 신규 케이스(${createdCase.case_id})로 등록되었습니다.`
+            message: `[JW-XDR 실시간 탐지·차단] 유입된 HTTP 요청에서 악성 페이로드(${evalResult.mitreTechniqueId})가 탐지되어 즉시 차단(403)되고 신규 케이스(${createdCase.case_id})로 등록되었습니다.`
           });
           return;
         }

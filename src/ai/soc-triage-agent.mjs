@@ -21,7 +21,7 @@ export function analyzeCaseWithSocAgent(store, {
     };
   }
 
-  // 종결 리포트는 Resolved 또는 Closed 상태일 때만 허용 (노션 스크린샷 img_26 규격)
+  // 종결 리포트는 Resolved 또는 Closed 상태일 때만 허용 (ISMS-P / SOC 표준 규격)
   if (reportType === '종결 리포트' && !['Resolved', 'Closed', 'Exception'].includes(targetCase.status)) {
     return {
       ok: false,
