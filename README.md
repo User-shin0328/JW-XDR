@@ -1,6 +1,6 @@
 # 🛡️ 통합 보안 관제 및 능동 대응 플랫폼 (`JW-XDR`)
 
-> *"본 시스템은 ① 제로 트러스트 접근 제어(ZTNA), ② SIEM/XDR 실시간 로그 상관분석 및 MITRE ATT&CK 매핑, ③ Windows 로컬 보안 정책 수동·자동 상시 실증, ④ ISO 42001 기반 SOC AI 에이전트 1차 정탐/오탐 분석, ⑤ 5중 안전장치 기반 Human-in-the-Loop 능동 대응(Active Response 4대 조치)을 통합 구현한 로컬 호스트 XDR 플랫폼(`JW-XDR`)입니다."*
+> *"본 시스템은 SKT ALEPH과정에 교육 커리큘럼에 따라 만든 ① 제로 트러스트 접근 제어(ZTNA), ② SIEM/XDR 실시간 로그 상관분석 및 MITRE ATT&CK 매핑, ③ Windows 로컬 보안 정책 수동·자동 상시 실증, ④ ISO 42001 기반 SOC AI 에이전트 1차 정탐/오탐 분석, ⑤ 5중 안전장치 기반 Human-in-the-Loop 능동 대응(Active Response 4대 조치)을 통합 구현한 로컬 호스트 XDR 플랫폼(`JW-XDR`)입니다."*
 
 ---
 
