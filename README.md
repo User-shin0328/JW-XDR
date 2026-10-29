@@ -63,6 +63,14 @@ flowchart TB
 
 ## 3. 대시보드(/dashboard/) 6대 핵심 관제 메뉴
 
+### 3.1 실제 구동 화면
+
+| 대시보드 메인 관제 화면 | Windows 보안 정책 상시 실증 | 능동 대응(SOAR) 및 AI 감사 |
+| :---: | :---: | :---: |
+| ![대시보드](스크린샷/대시보드.png) | ![Windows 보안 정책 점검](스크린샷/window보안정책점검.png) | ![능동 대응 SOAR](스크린샷/soar등.png) |
+
+### 3.2 6대 관제 메뉴 상세 규격
+
 | 메뉴명 | 주요 기능 및 실측 원리 | 관련 모듈 |
 | :--- | :--- | :--- |
 | **1. 위협 탐지 및 케이스 관제 (`cases`)** | - L7 인라인 IPS 실시간 패킷 검사 (SQLi, XSS, JNDI, 레지스트리 변조 감지 시 즉시 403 차단 및 케이스 생성)<br>- MITRE ATT&CK 14단계 공격 단계(Kill Chain) 하이라이트 및 엔터티 관계 그래프<br>- 정탐/오탐 판정 및 룰 튜닝, 사건 탐지/대응 시간(MTTD / MTTR) 실시간 메트릭 산출 | `server.mjs`<br>`detect-engine.mjs`<br>`case-manager.mjs` |
@@ -96,6 +104,10 @@ flowchart TB
 
 ```plaintext
 JW-XDR/
+├── 스크린샷/                       # 실제 시스템 구동 화면 캡처 이미지
+│   ├── 대시보드.png
+│   ├── window보안정책점검.png
+│   └── soar등.png
 ├── src/
 │   ├── server.mjs                  # 통합 HTTP 웹 서버 & L7 인라인 IPS 게이트웨이
 │   ├── ztna/
